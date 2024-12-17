@@ -1,30 +1,40 @@
-# pipeline-step_template
+# Step CV-Pipeline: data_prep
 
-Prerequisites
+This CV-Pipeline component is designed for processing the dataset: checking and cleaning the dataset, transforming the markup, dividing dataset samples into train, valid and test, reviewing and processing data.
 
-- Sinara is successfully deployed as described in [SinaraML Tutorial](https://github.com/4-DS/sinara-tutorials/wiki/Getting-started-with-SinaraML)
+Input data for step CV-Pipeline: data_prep
+- **coco_datasets_images**     
+images of the downloaded dataset
+- **coco_datasets_annotations**    
+annotation files of the downloaded dataset
 
-# Step repository naming conventions
+The output of this step CV-Pipeline is
+- **coco_train_dataset**     
+training dataset
+- **coco_eval_dataset**    
+validation dataset
+- **coco_test_dataset**    
+test dataset
 
-We will recommend forming the git repo name as: <%pipeline_name>-<%step_name>
+## How to run a step CV-Pipeline: data_prep
 
-But this is not a mandatory requirement. And our library should work under any layouts with naming
+### Create a directory for the project (or use an existing one)
+```
+mkdir obj_detect_rest
+cd obj_detect_rest
+```  
 
-The authoritative source of the pipeline and step names will now be exclusively in configs, and will not be tightly tied to the names of folders and git repositories
+### clone the repository: data_prep
+```
+git clone --recurse-submodules https://github.com/4-DS/obj_detect_rest-data_prep.git {dir_for_data_prep}
+cd {dir_for_data_prep}
+```  
 
-
-Make the following to create your Sinara step:
-
-1. Create empty git repo with https://github.com/<%organization_name>/<%pipeline_name>-<%step_name>.git 
-2. Clone the dsml component template repository
-- cd work
-- git clone --recurse-submodules https://github.com/4-DS/pipeline-step_template.git {my_step}
-3. Change dsml component remote origin
-- cd {my_step}
-- git remote set-url origin https://github.com/<%organization_name>/<%pipeline_name>-<%step_name>.git
-4. Squash dsml component template commits
-- cd {my_step}
-- git reset $(git commit-tree HEAD^{tree} -m "a new Sinara step")
-5. Push dsml component template to new origin
-- git push
-6. See the [Getting Started](https://github.com/4-DS/sinara-tutorials/wiki/Getting-started) for details
+### run step CV-Pipeline:data_prep
+```
+python step.dev.py
+```  
+or
+```
+step.prod.py
+``` 
